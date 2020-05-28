@@ -12,7 +12,6 @@
     "request-promise": "^4.2.5"
   },
   "devDependencies": {
-    "coveralls": "^3.1.0",
     "jest": "^26.0.1"
   },
   "scripts": {
