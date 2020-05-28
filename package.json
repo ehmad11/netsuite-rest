@@ -1,7 +1,16 @@
 {
   "name": "netsuite-rest",
   "version": "0.0.2",
-  "description": "",
+  "description": "Make requests to Netsuite's SuiteTalk REST Web Services",
+  "keywords": [
+    "netsuite",
+    "suitetalk",
+    "rest",
+    "web",
+    "services",
+    "promise"
+  ],
+  "author": "Muhammad Ahmed <a@ehmad11.com> (https://ehmad11.com/)",
   "homepage": "https://github.com/ehmad11/netsuite-rest#readme",
   "main": "netsuite-rest.js",
   "type": "module",
@@ -13,7 +22,8 @@
   },
   "devDependencies": {
     "coveralls": "^3.1.0",
-    "jest": "^26.0.1"
+    "jest": "^26.0.1",
+    "postversion": "git push && git push --tags"
   },
   "scripts": {
     "test": "jest",
@@ -23,6 +33,5 @@
     "type": "git",
     "url": "https://github.com/ehmad11/netsuite-rest.git"
   },
-  "author": "ehmad11",
   "license": "MIT"
 }
