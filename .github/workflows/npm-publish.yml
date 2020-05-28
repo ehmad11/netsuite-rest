@@ -6,6 +6,12 @@ name: Node.js Package
 on:
   release:
     types: [created]
+env:
+  consumer_key: ${{secrets.consumer_key}}
+  consumer_secret_key: ${{secrets.consumer_secret_key}}
+  token: ${{secrets.token}}
+  token_secret: ${{secrets.token_secret}}
+  realm: ${{secrets.realm}}
 
 jobs:
   build:
@@ -31,12 +37,6 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-          consumer_key: ${{secrets.consumer_key}}
-          consumer_secret_key: ${{secrets.consumer_secret_key}}
-          token: ${{secrets.token}}
-          token_secret: ${{secrets.token_secret}}
-          realm: ${{secrets.realm}}
-
 
   publish-gpr:
     needs: build
@@ -51,8 +51,3 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          consumer_key: ${{secrets.consumer_key}}
-          consumer_secret_key: ${{secrets.consumer_secret_key}}
-          token: ${{secrets.token}}
-          token_secret: ${{secrets.token_secret}}
-          realm: ${{secrets.realm}}
