@@ -1,6 +1,6 @@
 {
   "name": "netsuite-rest",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "homepage": "https://github.com/ehmad11/netsuite-rest#readme",
   "main": "netsuite-rest.js",
