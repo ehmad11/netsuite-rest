@@ -1,0 +1,56 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on: [push, pull_request]
+env:
+  CI: true
+  consumer_key: ${{secrets.consumer_key}}
+  consumer_secret_key: ${{secrets.consumer_secret_key}}
+  token: ${{secrets.token}}
+  token_secret: ${{secrets.token_secret}}
+  realm: ${{secrets.realm}}
+  
+jobs:
+  test:
+    name: Node ${{ matrix.node }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [10, 12, 14]
+        os: [ubuntu-latest, windows-latest]
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Set Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm run test-cov
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          flag-name: ${{matrix.os}}-node-${{ matrix.node }}
+          parallel: true
+
+  finish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Coveralls Finished
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel-finished: true

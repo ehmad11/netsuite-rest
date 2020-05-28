@@ -1,0 +1,8 @@
+node_modules
+*.test.js
+.env
+.env.sample
+coverage
+*.lcov
+*.yml
+.github

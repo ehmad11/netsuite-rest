@@ -1,0 +1,28 @@
+{
+  "name": "netsuite-rest",
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "https://github.com/ehmad11/netsuite-rest#readme",
+  "main": "netsuite-rest.js",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "oauth-1.0a": "^2.2.6",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5"
+  },
+  "devDependencies": {
+    "coveralls": "^3.1.0",
+    "jest": "^26.0.1"
+  },
+  "scripts": {
+    "test": "jest",
+    "test-cov": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ehmad11/netsuite-rest.git"
+  },
+  "author": "ehmad11",
+  "license": "MIT"
+}
