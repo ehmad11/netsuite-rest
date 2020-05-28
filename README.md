@@ -46,7 +46,6 @@ SuiteQl is a subservice of the query service. Following is an example to execute
 	.then(response => console.log(response) )
 	.catch((err) => console.log(err) );
 
-## Netsuite Rest API Browser:
+## Netsuite Rest API Browser
 
-[[The REST API Browser]][1]  provides a visual overview of the structure and capabilities of the REST web services Record API. The data presented in the REST API Browser is based on OpenAPI 3.0 metadata.
-[1]: https://system.netsuite.com/help/helpcenter/en_US/APIs/REST_API_Browser/record/v1/2019.2/index.htmlhttps://system.netsuite.com/help/helpcenter/en_US/APIs/REST_API_Browser/record/v1/2019.2/index.html "REST API Browser"
+[REST API Browser](https://system.netsuite.com/help/helpcenter/en_US/APIs/REST_API_Browser/record/v1/2019.2/index.html) provides a visual overview of the structure and capabilities of the REST web services Record API. The data presented in the REST API Browser is based on OpenAPI 3.0 metadata.
