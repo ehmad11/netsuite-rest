@@ -11,6 +11,8 @@ env:
   token: ${{secrets.token}}
   token_secret: ${{secrets.token_secret}}
   realm: ${{secrets.realm}}
+  COVERALLS_REPO_TOKEN: "${{ secrets.COVERALLS_REPO_TOKEN }}"
+  COVERALLS_GIT_BRANCH: "${{ github.ref }}"
   
 jobs:
   test:
