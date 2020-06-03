@@ -23,7 +23,7 @@ To set up TBA in Netsuite, see the help topic [Getting Started with Token-based 
 			realm :  process.env.realm
 		});
 
-### Sample Requests
+## Sample Requests
 
 All requests are [signed](https://system.netsuite.com/app/help/helpcenter.nl?fid=section_1534941088.html).
 
@@ -48,11 +48,11 @@ SuiteQl is a subservice of the query service. Following is an example to execute
 		method: "POST", 
 		body: `{
 			"q": "SELECT 
-						id, companyName, email, dateCreated
+					id, companyName, email, dateCreated
 				  FROM customer 
 				  WHERE 
-						dateCreated >= '01/01/2019'
-						AND dateCreated < '01/01/2020'"
+					dateCreated >= '01/01/2019'
+					AND dateCreated < '01/01/2020'"
 		}`
 	})
 	.then(response => console.log(response) )
