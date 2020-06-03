@@ -38,29 +38,38 @@ class NetsuiteRest {
         )
     }
     request(opts) {
-        const {
-            url,
+        const {    
+            url,        
+            path = '',
             method = 'GET',
             body = ''
         } = opts;
+        
+        if(url)
+            path = url; // backward compatibility, will be dropped in furture
+        
         const options = {
-            uri: `https://${this.realm}.suitetalk.api.netsuite.com/services/rest/${url}`,
+            uri: `https://${this.realm}.suitetalk.api.netsuite.com/services/rest/${path}`,
             method,
             resolveWithFulLResponse: true,
             transform: (body, response) => {
+                let data = {}
+                if(body)
+                    data = JSON.parse(body)
                 return {
                         statusCode: response.statusCode,
                         'headers': response.headers,
-                        'data': body};
+                        'data': data
+                    };
                 }
         };
         options.headers = this.getAuthorizationHeader(options);
         if (body)
         {
-            options.body = body;       
+            options.body = body;
             options.headers.prefer = "transient";
         }        
-        return requestPromise(options);        
+        return requestPromise(options);
     }
 }
 module.exports = NetsuiteRest;
