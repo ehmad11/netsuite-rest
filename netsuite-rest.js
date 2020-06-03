@@ -39,17 +39,18 @@ class NetsuiteRest {
     }
     request(opts) {
         const {    
-            url,        
+            url = '',        
             path = '',
             method = 'GET',
             body = ''
         } = opts;
         
-        if(url)
-            path = url; // backward compatibility, will be dropped in furture
+
+        // url is for backward compatibility only, will be removed soon 
+        let uri = `https://${this.realm}.suitetalk.api.netsuite.com/services/rest/${path}${url}`  
         
         const options = {
-            uri: `https://${this.realm}.suitetalk.api.netsuite.com/services/rest/${path}`,
+            uri: uri,
             method,
             resolveWithFulLResponse: true,
             transform: (body, response) => {

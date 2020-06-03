@@ -39,7 +39,7 @@ describe('Netsuite Rest Webservices - Service Class', () => {
 
     test('should make GET request - GET Customers', () => {
       expect.assertions(1);
-      return NsApi.request({path: 'record/v1/customer/'})
+      return NsApi.request({url: 'record/v1/customer/'})
           .then(response => expect(response.statusCode).toEqual(200))
           .catch(() => { console.log("GET request failed.")});
     });    
