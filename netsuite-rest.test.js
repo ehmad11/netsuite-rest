@@ -30,31 +30,31 @@ describe('Netsuite Rest Webservices - Service Class', () => {
     test('should make test request', () => {
             expect.assertions(1);
             return NsApi.request({
-                  url: '*', 
+                  path: '*', 
                   method:"OPTIONS"
                 })
                 .then(response => expect(response.statusCode).toEqual(204))
-                .catch(() => { console.log("Error on test request.")});
+                .catch(() => { console.log("Test request failed.")});
     });
 
     test('should make GET request - GET Customers', () => {
       expect.assertions(1);
-      return NsApi.request({url: 'record/v1/customer/'})
+      return NsApi.request({path: 'record/v1/customer/'})
           .then(response => expect(response.statusCode).toEqual(200))
-          .catch(() => { console.log("Error on GET request.")});
+          .catch(() => { console.log("GET request failed.")});
     });    
 
     test('should make POST request - SuiteQL Query', () => {
       expect.assertions(1);
       return NsApi.request({
-                url: 'query/v1/suiteql?limit=5', 
+                path: 'query/v1/suiteql?limit=5', 
                 method: "POST", 
                 body: `{
                    "q": "SELECT id, companyName, email, dateCreated FROM customer WHERE dateCreated >= '01/01/2019' AND dateCreated < '01/01/2020'"
                 }`
               })
           .then(response => expect(response.statusCode).toEqual(200))
-          .catch(() => { console.log("Error on POST request.")});
+          .catch(() => { console.log("POST request failed.")});
     });
 
 });
