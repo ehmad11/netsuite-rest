@@ -12,6 +12,8 @@ Make requests to SuiteTalk REST Web Services
 
 ## Quick Start
 
+To set up TBA in Netsuite, see the help topic [Getting Started with Token-based Authentication](https://system.netsuite.com/app/help/helpcenter.nl?fid=section_4247337262.html). 
+
 	var NsApiWrapper = require('netsuite-rest');
 	NsApi = new NsApiWrapper({
 			consumer_key :  process.env.consumer_key,
@@ -22,29 +24,44 @@ Make requests to SuiteTalk REST Web Services
 		});
 
 ### Sample Requests
-Test Request
 
-	NsApi.request({url: '*', method:"OPTIONS"})
+All requests are [signed](https://system.netsuite.com/app/help/helpcenter.nl?fid=section_1534941088.html).
+
+#### Test Request
+
+	NsApi.request({path: '*', method:"OPTIONS"})
 	.then(response  =>  console.log(response) )
 	.catch((err) => console.log(err) );
 
-GET Request: 
+#### GET Request: 
 
-	NsApi.request({url: 'record/v1/customer/'})
+	NsApi.request({path: 'record/v1/customer/'})
 	.then(response  => console.log(response) )
 	.catch((err) => console.log(err) );
+
+#### SuiteQl 
 
 SuiteQl is a subservice of the query service. Following is an example to execute SuiteQL queries:
 
 	NsApi.request({
-		url: 'query/v1/suiteql?limit=5', 
+		path: 'query/v1/suiteql?limit=5', 
 		method: "POST", 
 		body: `{
-			"q": "SELECT id, companyName, email, dateCreated FROM customer WHERE dateCreated >= '01/01/2019' AND dateCreated < '01/01/2020'"
+			"q": "SELECT 
+						id, companyName, email, dateCreated
+				  FROM customer 
+				  WHERE 
+						dateCreated >= '01/01/2019'
+						AND dateCreated < '01/01/2020'"
 		}`
 	})
 	.then(response => console.log(response) )
 	.catch((err) => console.log(err) );
+
+## Response
+
+Requests are returned with promise support (`.then(...)`). HTTP response codes other than 2xx will cause the promise to be rejected.
+
 
 ## Netsuite Rest API Browser
 
