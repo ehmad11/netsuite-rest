@@ -36,7 +36,8 @@ All requests are [signed](https://system.netsuite.com/app/help/helpcenter.nl?fid
 #### GET Request: 
 
 	NsApi.request({path: 'record/v1/customer/'})
-	.then(response  => console.log(response) )
+	.then(response  => response.data )
+	.then(data  => console.log(data.links) )
 	.catch((err) => console.log(err) );
 
 #### SuiteQl 
@@ -62,6 +63,15 @@ SuiteQl is a subservice of the query service. Following is an example to execute
 
 Requests are returned with promise support (`.then(...)`). HTTP response codes other than 2xx will cause the promise to be rejected.
 
+## Metadata
+
+	NsApi.request({path: 'record/v1/metadata-catalog/'})
+
+Record is the name of the service we are trying to access, v1 is the service version, and metadata-catalog is the sub-resource, that is, the record metadata. The response informs you through HATEOAS links about the possible mediaType flavor in which the response can be obtained.
+
+## HATEOAS
+
+You can navigate to the referenced resources without deeper knowledge of the system. A typical response contains "links" sections for each resource, which can be a sub-resource of a parent resource or any other referenced resource. You can use links to work with those resources.
 
 ## Netsuite Rest API Browser
 
