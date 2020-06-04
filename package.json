@@ -12,8 +12,8 @@
   ],
   "author": "Muhammad Ahmed <a@ehmad11.com> (https://ehmad11.com/)",
   "homepage": "https://github.com/ehmad11/netsuite-rest#readme",
+  "bugs": "https://github.com/ehmad11/netsuite-rest/issues",
   "main": "netsuite-rest.js",
-  "type": "module",
   "dependencies": {
     "dotenv": "^8.2.0",
     "oauth-1.0a": "^2.2.6",
