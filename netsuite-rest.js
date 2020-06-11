@@ -3,7 +3,7 @@ const crypto = require('crypto')
 var requestPromise = require('request-promise');
 
 class NetsuiteRest {
-    constructor (options) {
+    constructor(options) {
         this.consumer_key = options.consumer_key;
         this.consumer_secret_key = options.consumer_secret_key;
         this.token = options.token;
@@ -11,6 +11,7 @@ class NetsuiteRest {
         this.version = '1.0';
         this.algorithm = 'HMAC-SHA256';
         this.realm = options.realm;
+        this.base_url = options.base_url;
     }
     getAuthorizationHeader(options) {
         const oauth = OAuth({
@@ -38,38 +39,34 @@ class NetsuiteRest {
         )
     }
     request(opts) {
-        const {    
-            url = '',        
-            path = '',
+        const {
+            path = '*',
             method = 'GET',
             body = ''
         } = opts;
-        
 
-        // url is for backward compatibility only, will be removed soon 
-        let uri = `https://${this.realm}.suitetalk.api.netsuite.com/services/rest/${path}${url}`  
-        
+        let uri = this.base_url ? `${this.base_url}/services/rest/${path}` : `https://${this.realm}.suitetalk.api.netsuite.com/services/rest/${path}`
+
         const options = {
             uri: uri,
             method,
             resolveWithFulLResponse: true,
             transform: (body, response) => {
                 let data = {}
-                if(body)
+                if (body)
                     data = JSON.parse(body)
                 return {
-                        statusCode: response.statusCode,
-                        'headers': response.headers,
-                        'data': data
-                    };
-                }
+                    statusCode: response.statusCode,
+                    'headers': response.headers,
+                    'data': data
+                };
+            }
         };
         options.headers = this.getAuthorizationHeader(options);
-        if (body)
-        {
+        if (body) {
             options.body = body;
             options.headers.prefer = "transient";
-        }        
+        }
         return requestPromise(options);
     }
 }

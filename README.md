@@ -12,16 +12,16 @@ Make requests to SuiteTalk REST Web Services
 
 ## Quick Start
 
-To set up TBA in Netsuite, see the help topic [Getting Started with Token-based Authentication](https://system.netsuite.com/app/help/helpcenter.nl?fid=section_4247337262.html). 
+To set up TBA in Netsuite, see the help topic [Getting Started with Token-based Authentication](https://system.netsuite.com/app/help/helpcenter.nl?fid=section_4247337262.html).
 
 	var NsApiWrapper = require('netsuite-rest');
 	NsApi = new NsApiWrapper({
-			consumer_key :  process.env.consumer_key,
-			consumer_secret_key :  process.env.consumer_secret_key,
-			token:  process.env.token,
-			token_secret:  process.env.token_secret,
-			realm :  process.env.realm
-		});
+		consumer_key: process.env.consumer_key,
+		consumer_secret_key: process.env.consumer_secret_key,
+		token: process.env.token,
+		token_secret: process.env.token_secret,
+		realm: process.env.realm
+	});
 
 ## Sample Requests
 
@@ -29,35 +29,40 @@ All requests are [signed](https://system.netsuite.com/app/help/helpcenter.nl?fid
 
 #### Test Request
 
-	NsApi.request({path: '*', method:"OPTIONS"})
-	.then(response  =>  console.log(response) )
-	.catch((err) => console.log(err) );
+	NsApi.request({
+        path: '*',
+        method: "OPTIONS"
+    })
+    .then(response => console.log(response))
+    .catch((err) => console.log(err));
 
 #### GET Request: 
 
-	NsApi.request({path: 'record/v1/customer/'})
-	.then(response  => response.data )
-	.then(data  => console.log(data.links) )
-	.catch((err) => console.log(err) );
+	NsApi.request({
+        path: 'record/v1/customer/'
+    })
+    .then(response => response.data)
+    .then(data => console.log(data.links))
+    .catch((err) => console.log(err));
 
 #### SuiteQl 
 
 SuiteQl is a subservice of the query service. Following is an example to execute SuiteQL queries:
 
 	NsApi.request({
-		path: 'query/v1/suiteql?limit=5', 
-		method: "POST", 
-		body: `{
-			"q": "SELECT 
-					id, companyName, email, dateCreated
-				  FROM customer 
-				  WHERE 
-					dateCreated >= '01/01/2019'
-					AND dateCreated < '01/01/2020'"
+        path: 'query/v1/suiteql?limit=5',
+        method: "POST",
+        body: `{
+			"q": 
+			"SELECT 
+				id, companyName, email, dateCreated
+             FROM customer WHERE 
+                dateCreated >= '01/01/2019'
+               	AND dateCreated < '01/01/2020'"
 		}`
-	})
-	.then(response => console.log(response) )
-	.catch((err) => console.log(err) );
+    })
+    .then(response => console.log(response))
+    .catch((err) => console.log(err));
 
 ## Response
 
