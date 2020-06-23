@@ -67,7 +67,7 @@ describe('Netsuite Rest Webservices', () => {
   test('should work with base_url', () => {
     expect.assertions(1);
 
-    NsApi = new NsApiWrapper({
+    netsuite = new NsApiWrapper({
       consumer_key: process.env.consumer_key,
       consumer_secret_key: process.env.consumer_secret_key,
       token: process.env.token,
@@ -76,7 +76,7 @@ describe('Netsuite Rest Webservices', () => {
       base_url: process.env.base_url
     });
 
-    return NsApi.request({
+    return netsuite.request({
         method: "OPTIONS"
       })
       .then(response => expect(response.statusCode).toEqual(204))
