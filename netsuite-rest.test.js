@@ -1,7 +1,7 @@
 const dotenv = require('dotenv').config();
 var NsApiWrapper = require('./netsuite-rest.js');
 
-describe('Netsuite Rest Webservices - Service Class', () => {
+describe('Netsuite Rest Webservices', () => {
   jest.setTimeout(10000);
   let NsApi;
 
@@ -60,6 +60,28 @@ describe('Netsuite Rest Webservices - Service Class', () => {
       .then(response => expect(response.statusCode).toEqual(200))
       .catch(() => {
         console.log("POST request failed.")
+      });
+  });
+
+
+  test('should work with base_url', () => {
+    expect.assertions(1);
+
+    NsApi = new NsApiWrapper({
+      consumer_key: process.env.consumer_key,
+      consumer_secret_key: process.env.consumer_secret_key,
+      token: process.env.token,
+      token_secret: process.env.token_secret,
+      realm: process.env.realm,
+      base_url: process.env.base_url
+    });
+
+    return NsApi.request({
+        method: "OPTIONS"
+      })
+      .then(response => expect(response.statusCode).toEqual(204))
+      .catch(() => {
+        console.log("Test request failed.")
       });
   });
 
