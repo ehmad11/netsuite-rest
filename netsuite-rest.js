@@ -45,7 +45,10 @@ class NetsuiteRest {
             body = ''
         } = opts;
 
-        let uri = this.base_url ? `${this.base_url}/services/rest/${path}` : `https://${this.realm}.suitetalk.api.netsuite.com/services/rest/${path}`
+        let uri = `https://${this.realm}.suitetalk.api.netsuite.com/services/rest/${path}`;
+
+        if(this.base_url)
+            uri = `${this.base_url}/services/rest/${path}`;
 
         const options = {
             uri: uri,
