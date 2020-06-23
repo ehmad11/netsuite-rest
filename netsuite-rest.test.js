@@ -13,6 +13,17 @@ describe('Netsuite Rest Webservices', () => {
       token_secret: process.env.token_secret,
       realm: process.env.realm
     });
+
+    // with base_url
+    netsuite = new NsApiWrapper({
+      consumer_key: process.env.consumer_key,
+      consumer_secret_key: process.env.consumer_secret_key,
+      token: process.env.token,
+      token_secret: process.env.token_secret,
+      realm: process.env.realm,
+      base_url: process.env.base_url
+    });
+
   });
 
   afterAll(async () => {});
@@ -66,16 +77,6 @@ describe('Netsuite Rest Webservices', () => {
 
   test('should work with base_url', () => {
     expect.assertions(1);
-
-    netsuite = new NsApiWrapper({
-      consumer_key: process.env.consumer_key,
-      consumer_secret_key: process.env.consumer_secret_key,
-      token: process.env.token,
-      token_secret: process.env.token_secret,
-      realm: process.env.realm,
-      base_url: process.env.base_url
-    });
-
     return netsuite.request({
         method: "OPTIONS"
       })
