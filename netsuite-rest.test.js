@@ -4,6 +4,7 @@ var NsApiWrapper = require('./netsuite-rest.js');
 describe('Netsuite Rest Webservices', () => {
   jest.setTimeout(10000);
   let NsApi;
+  let NsApiBaseUrl;
 
   beforeAll(async () => {
     NsApi = new NsApiWrapper({
@@ -15,7 +16,7 @@ describe('Netsuite Rest Webservices', () => {
     });
 
     // with base_url
-    netsuite = new NsApiWrapper({
+    NsApiBaseUrl = new NsApiWrapper({
       consumer_key: process.env.consumer_key,
       consumer_secret_key: process.env.consumer_secret_key,
       token: process.env.token,
@@ -76,8 +77,9 @@ describe('Netsuite Rest Webservices', () => {
 
 
   test('should work with base_url', () => {
-    expect.assertions(1);
-    return netsuite.request({
+    expect.assertions(2);
+    expect(process.env.base_url).toBeDefined();
+    return NsApiBaseUrl.request({
         method: "OPTIONS"
       })
       .then(response => expect(response.statusCode).toEqual(204))
