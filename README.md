@@ -64,6 +64,8 @@ SuiteQl is a subservice of the query service. Following is an example to execute
     .then(response => console.log(response))
     .catch((err) => console.log(err));
 
+Please see [wiki](https://github.com/ehmad11/netsuite-rest/wiki/) for [More Examples](https://github.com/ehmad11/netsuite-rest/wiki/Examples)...
+
 ## Response
 
 Requests are returned with promise support (`.then(...)`). HTTP response codes other than 2xx will cause the promise to be rejected.
