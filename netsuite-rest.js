@@ -63,7 +63,8 @@ class NetsuiteRest {
                     'headers': response.headers,
                     'data': data
                 };
-            }
+            },
+            gzip: true
         };
         options.headers = this.getAuthorizationHeader(options);
         if (body) {
