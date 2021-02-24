@@ -1,4 +1,5 @@
-# # NetSuite - SuiteTalk REST Web Services
+
+#  NetSuite - SuiteTalk REST Web Services
 
 [![NPM](https://nodei.co/npm/netsuite-rest.png)](https://www.npmjs.com/package/netsuite-rest)
 
@@ -45,9 +46,12 @@ All requests are [signed](https://system.netsuite.com/app/help/helpcenter.nl?fid
     .then(data => console.log(data.links))
     .catch((err) => console.log(err));
 
-#### SuiteQl 
+#### SuiteQL
 
-SuiteQl is a subservice of the query service. Following is an example to execute SuiteQL queries:
+>NOTE: If you are interested only in the SuiteQL, check [SuiteQL package](https://www.npmjs.com/package/suiteql) or view [source code](https://github.com/ehmad11/suiteql). SuiteQL class extends this class and can return promise or stream for large number of rows. 
+
+
+SuiteQL is a subservice of the query service. Following is an example to execute SuiteQL queries:
 
 	NsApi.request({
         path: 'query/v1/suiteql?limit=5',
@@ -64,7 +68,6 @@ SuiteQl is a subservice of the query service. Following is an example to execute
     .then(response => console.log(response))
     .catch((err) => console.log(err));
 
-Please see [wiki](https://github.com/ehmad11/netsuite-rest/wiki/) for [More Examples](https://github.com/ehmad11/netsuite-rest/wiki/Examples)...
 
 ## Response
 
