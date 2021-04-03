@@ -1,6 +1,6 @@
 {
   "name": "netsuite-rest",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Make requests to Netsuite's SuiteTalk REST Web Services",
   "keywords": [
     "netsuite",
