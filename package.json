@@ -18,11 +18,11 @@
     "dotenv": "^8.2.0",
     "oauth-1.0a": "^2.2.6",
     "request": "^2.88.2",
-    "request-promise": "^4.2.5"
+    "request-promise": "^4.2.6"
   },
   "devDependencies": {
     "coveralls": "^3.1.0",
-    "jest": "^26.0.1"
+    "jest": "^26.6.3"
   },
   "scripts": {
     "test": "jest --coverage",
