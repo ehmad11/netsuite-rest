@@ -83,6 +83,12 @@ Record is the name of the service we are trying to access, v1 is the service ver
 
 You can navigate to the referenced resources without deeper knowledge of the system. A typical response contains "links" sections for each resource, which can be a sub-resource of a parent resource or any other referenced resource. You can use links to work with those resources.
 
-## Netsuite Rest API Browser
+## More Resources
 
-[REST API Browser](https://system.netsuite.com/help/helpcenter/en_US/APIs/REST_API_Browser/record/v1/2019.2/index.html) provides a visual overview of the structure and capabilities of the REST web services Record API. The data presented in the REST API Browser is based on OpenAPI 3.0 metadata.
+### SuiteTalk REST Web Services
+
+[2021.1](https://docs.oracle.com/cloud/latest/netsuitecs_gs/NSTRW/NSTRW.pdf)  SuiteTalk REST Web Services Official Documention, dated: March 10, 2021
+
+###  Netsuite Rest API Browser 
+
+[REST API Browser](https://system.netsuite.com/help/helpcenter/en_US/APIs/REST_API_Browser/record/v1/2021.1/index.html) provides a visual overview of the structure and capabilities of the REST web services Record API. The data presented in the REST API Browser is based on OpenAPI 3.0 metadata.
