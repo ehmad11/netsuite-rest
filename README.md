@@ -17,11 +17,12 @@ To set up TBA in Netsuite, see the help topic [Getting Started with Token-based 
 
 	var NsApiWrapper = require('netsuite-rest');
 	NsApi = new NsApiWrapper({
-		consumer_key: process.env.consumer_key,
-		consumer_secret_key: process.env.consumer_secret_key,
-		token: process.env.token,
-		token_secret: process.env.token_secret,
-		realm: process.env.realm
+		consumer_key: 'consumer_key',
+		consumer_secret_key: 'consumer_secret_key',
+		token: 'token',
+		token_secret: 'token_secret',
+		realm: 'realm',
+        base_url: 'base_url'
 	});
 
 ## Sample Requests
