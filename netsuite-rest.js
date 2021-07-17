@@ -1,6 +1,6 @@
 const OAuth = require('oauth-1.0a')
 const crypto = require('crypto')
-var requestPromise = require('request-promise');
+var got = require('got');
 
 class NetsuiteRest {
     constructor(options) {
@@ -30,7 +30,7 @@ class NetsuiteRest {
         })
         return oauth.toHeader(
             oauth.authorize({
-                url: options.uri,
+                url: options.url,
                 method: options.method
             }, {
                 key: this.token,
@@ -51,27 +51,17 @@ class NetsuiteRest {
             uri = `${this.base_url}/services/rest/${path}`;
 
         const options = {
-            uri: uri,
+            url: uri,
             method,
-            resolveWithFulLResponse: true,
-            transform: (body, response) => {
-                let data = {}
-                if (body)
-                    data = JSON.parse(body)
-                return {
-                    statusCode: response.statusCode,
-                    'headers': response.headers,
-                    'data': data
-                };
-            },
-            gzip: true
+            throwHttpErrors: false,
+            decompress: true
         };
         options.headers = this.getAuthorizationHeader(options);
         if (body) {
             options.body = body;
             options.headers.prefer = "transient";
         }
-        return requestPromise(options);
+        return got(options);
     }
 }
 module.exports = NetsuiteRest;
