@@ -47,14 +47,23 @@ class NetsuiteRest {
 
         let uri = `https://${this.realm}.suitetalk.api.netsuite.com/services/rest/${path}`;
 
-        if(this.base_url)
+        if (this.base_url)
             uri = `${this.base_url}/services/rest/${path}`;
 
         const options = {
             url: uri,
             method,
             throwHttpErrors: false,
-            decompress: true
+            decompress: true,
+            hooks: {
+                afterResponse: [(response) => {
+                    return {
+                        ...response,
+                        'data': response.body ? JSON.parse(response.body) : null,
+                    };
+                }
+                ]
+            }
         };
         options.headers = this.getAuthorizationHeader(options);
         if (body) {
