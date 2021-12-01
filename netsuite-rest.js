@@ -53,7 +53,7 @@ class NetsuiteRest {
         const options = {
             url: uri,
             method,
-            throwHttpErrors: false,
+            throwHttpErrors: true,
             decompress: true,
             hooks: {
                 afterResponse: [(response) => {
