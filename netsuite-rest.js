@@ -42,10 +42,11 @@ class NetsuiteRest {
         const {
             path = '*',
             method = 'GET',
-            body = ''
+            body = '',
+            heads={}
         } = opts;
 
-        let uri = `https://${this.realm}.suitetalk.api.netsuite.com/services/rest/${path}`;
+        let uri = `https://${this.realm.replace("_SB",'-sb')}.suitetalk.api.netsuite.com/services/rest/${path}`;
 
         if (this.base_url)
             uri = `${this.base_url}/services/rest/${path}`;
@@ -66,6 +67,9 @@ class NetsuiteRest {
             }
         };
         options.headers = this.getAuthorizationHeader(options);
+        if(heads){
+            options.headers ={...options.headers,...heads}
+        }
         if (body) {
             options.body = body;
             options.headers.prefer = "transient";
