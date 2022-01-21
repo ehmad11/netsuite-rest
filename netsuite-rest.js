@@ -67,7 +67,7 @@ class NetsuiteRest {
             }
         };
         options.headers = this.getAuthorizationHeader(options);
-        if(heads){
+        if(Object.keys(heads).length > 0){
             options.headers ={...options.headers,...heads}
         }
         if (body) {
