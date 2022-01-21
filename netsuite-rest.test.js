@@ -88,4 +88,17 @@ describe('Netsuite Rest Webservices', () => {
       });
   });
 
+  test('should work with additional headers', () => {
+    expect.assertions(1);
+    return NsApi.request({
+        method: "OPTIONS",
+        heads: {
+          foo: 'foo'
+        }
+      })
+      .then(response => expect(response.statusCode).toEqual(204))
+      .catch(() => {
+        console.log("Test request failed.")
+      });
+  });
 });
