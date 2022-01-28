@@ -46,7 +46,22 @@ class NetsuiteRest {
             heads={}
         } = opts;
 
-        let uri = `https://${this.realm.replace("_SB",'-sb')}.suitetalk.api.netsuite.com/services/rest/${path}`;
+        // Setup the Request URI
+        let uri
+        if (this.realm.toLowerCase().includes("sb")) {
+        // The account id is a Sandbox address - typically XXXXXX_SB or XXXXXX_SB1
+        // This needs converted to a dash for the URI
+        const realmSplit = this.realm.split("_");
+
+        // Append the Sandbox Value onto the end with a dash instead
+        const realmUrl = `${realmSplit[0]}-${realmSplit[1].toLowerCase()}`;
+
+        // Setup Uri
+        uri = `https://${realmUrl}.suitetalk.api.netsuite.com/services/rest/${path}`;
+        } else {
+        // Account is not a sandbox - is Production account, pass realm Directly into URI
+        uri = `https://${this.realm}.suitetalk.api.netsuite.com/services/rest/${path}`;
+        }
 
         if (this.base_url)
             uri = `${this.base_url}/services/rest/${path}`;
