@@ -27,7 +27,7 @@ describe('Netsuite Rest Webservices', () => {
 
   });
 
-  afterAll(async () => {});
+  afterAll(async () => { });
 
   it('should check env and NsApi', () => {
     expect(process.env.consumer_key).toBeDefined();
@@ -41,8 +41,8 @@ describe('Netsuite Rest Webservices', () => {
   test('should make test request', () => {
     expect.assertions(1);
     return NsApi.request({
-        method: "OPTIONS"
-      })
+      method: "OPTIONS"
+    })
       .then(response => expect(response.statusCode).toEqual(204))
       .catch(() => {
         console.log("Test request failed.")
@@ -52,8 +52,8 @@ describe('Netsuite Rest Webservices', () => {
   test('should make GET request - GET Customers', () => {
     expect.assertions(1);
     return NsApi.request({
-        path: 'record/v1/customer/'
-      })
+      path: 'record/v1/customer/'
+    })
       .then(response => expect(response.statusCode).toEqual(200))
       .catch(() => {
         console.log("GET request failed.")
@@ -63,25 +63,24 @@ describe('Netsuite Rest Webservices', () => {
   test('should make POST request - SuiteQL Query', () => {
     expect.assertions(1);
     return NsApi.request({
-        path: 'query/v1/suiteql?limit=5',
-        method: "POST",
-        body: `{
+      path: 'query/v1/suiteql?limit=5',
+      method: "POST",
+      body: `{
                    "q": "SELECT id, companyName, email, dateCreated FROM customer WHERE dateCreated >= '01/01/2019' AND dateCreated < '01/01/2020'"
                 }`
-      })
+    })
       .then(response => expect(response.statusCode).toEqual(200))
       .catch(() => {
         console.log("POST request failed.")
       });
   });
 
-
   test('should work with base_url', () => {
     expect.assertions(2);
     expect(process.env.base_url).toBeDefined();
     return NsApiBaseUrl.request({
-        method: "OPTIONS"
-      })
+      method: "OPTIONS"
+    })
       .then(response => expect(response.statusCode).toEqual(204))
       .catch(() => {
         console.log("Test request failed.")
@@ -91,14 +90,31 @@ describe('Netsuite Rest Webservices', () => {
   test('should work with additional headers', () => {
     expect.assertions(1);
     return NsApi.request({
-        method: "OPTIONS",
-        heads: {
-          foo: 'foo'
-        }
-      })
+      method: "OPTIONS",
+      heads: {
+        foo: 'foo'
+      }
+    })
       .then(response => expect(response.statusCode).toEqual(204))
       .catch(() => {
         console.log("Test request failed.")
       });
+  });
+
+  test('sandbox realms should work', async () => {
+    expect.assertions(1);
+    let sandbox = new NsApiWrapper({
+      consumer_key: process.env.consumer_key,
+      consumer_secret_key: process.env.consumer_secret_key,
+      token: process.env.token,
+      token_secret: process.env.token_secret,
+      realm: "123456XX_SB3"
+    });
+    await expect(
+      sandbox.request({
+        method: "OPTIONS",
+      })
+    ).rejects.toThrow(Error);
+
   });
 });
