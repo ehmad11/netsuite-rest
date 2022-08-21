@@ -1,6 +1,7 @@
 # NetSuite - SuiteTalk REST Web Services
 
 [![NPM](https://nodei.co/npm/netsuite-rest.png)](https://www.npmjs.com/package/netsuite-rest)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fehmad11%2Fnetsuite-rest.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fehmad11%2Fnetsuite-rest?ref=badge_shield)
 
 ![Node.js CI](https://github.com/ehmad11/netsuite-rest/workflows/Node.js%20CI/badge.svg?branch=master) [![npm version](https://badge.fury.io/js/netsuite-rest.svg)](https://www.npmjs.com/package/netsuite-rest) [![downloads](https://img.shields.io/npm/dm/netsuite-rest.svg)](https://www.npmjs.com/package/netsuite-rest) [![Coverage Status](https://coveralls.io/repos/github/ehmad11/netsuite-rest/badge.svg?branch=master)](https://coveralls.io/github/ehmad11/netsuite-rest?branch=master)
 
@@ -90,3 +91,6 @@ You can navigate to the referenced resources without deeper knowledge of the sys
 ### Netsuite Rest API Browser
 
 [REST API Browser](https://system.netsuite.com/help/helpcenter/en_US/APIs/REST_API_Browser/record/v1/2021.2/index.html) provides a visual overview of the structure and capabilities of the REST web services Record API. The data presented in the REST API Browser is based on OpenAPI 3.0 metadata.
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fehmad11%2Fnetsuite-rest.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fehmad11%2Fnetsuite-rest?ref=badge_large)
