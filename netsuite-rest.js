@@ -1,8 +1,8 @@
-const OAuth = require("oauth-1.0a");
-const crypto = require("crypto");
-var got = require("got");
+import OAuth from "oauth-1.0a";
+import crypto from "crypto";
+import got from "got";
 
-class NetsuiteRest {
+export default class NetsuiteRest {
   constructor(options) {
     this.consumer_key = options.consumer_key;
     this.consumer_secret_key = options.consumer_secret_key;
@@ -81,4 +81,3 @@ class NetsuiteRest {
     return got(options);
   }
 }
-module.exports = NetsuiteRest;

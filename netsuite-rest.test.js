@@ -1,8 +1,9 @@
-const dotenv = require("dotenv").config();
-var NsApiWrapper = require("./netsuite-rest.js");
+import "dotenv/config";
+import NsApiWrapper from "./netsuite-rest";
+import { jest } from "@jest/globals";
 
 describe("Netsuite Rest Webservices", () => {
-  jest.setTimeout(10000);
+  jest.setTimeout(20000);
   let NsApi;
   let NsApiBaseUrl;
 
