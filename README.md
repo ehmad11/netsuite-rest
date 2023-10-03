@@ -14,7 +14,9 @@ Make requests to SuiteTalk REST Web Services
 
 To set up TBA in Netsuite, see the help topic [Getting Started with Token-based Authentication](https://system.netsuite.com/app/help/helpcenter.nl?fid=section_4247337262.html).
 
-    var NsApiWrapper = require('netsuite-rest');
+**Warning:** This package is native [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) and no longer provides a CommonJS export. If your project uses CommonJS, you will have to [convert to ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c) or use the [dynamic `import()`](https://v8.dev/features/dynamic-import) function. Please don't open issues for questions regarding CommonJS / ESM (last CommonJS build is `1.1.0`).
+
+    import NsApiWrapper from 'netsuite-rest';
     NsApi = new NsApiWrapper({
     	consumer_key: 'consumer_key',
     	consumer_secret_key: 'consumer_secret_key',
