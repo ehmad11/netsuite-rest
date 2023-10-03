@@ -26,14 +26,11 @@
   },
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
-    "test-cov": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+    "test-cov": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/ehmad11/netsuite-rest.git"
   },
-  "license": "MIT",
-  "jest": {
-    "transform": {}
-  }
+  "license": "MIT"
 }
