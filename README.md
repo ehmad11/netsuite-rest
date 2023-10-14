@@ -10,6 +10,10 @@ Make requests to SuiteTalk REST Web Services
 
     npm i netsuite-rest
 
+### ESM or CommonJS?
+
+This package is still compatible with CommonJS. But some dependencies, like [`got`](https://www.npmjs.com/package/got) are now available only in [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules). This package [will not be](https://github.com/ehmad11/netsuite-rest/issues/27) modified to support latest `got` versions to stay compatible with CommonJS. Instead you can use the native ESM module [netsuite-api-client](https://www.npmjs.com/package/netsuite-api-client), which is a fork of the current package.
+
 ## Quick Start
 
 To set up TBA in Netsuite, see the help topic [Getting Started with Token-based Authentication](https://system.netsuite.com/app/help/helpcenter.nl?fid=section_4247337262.html).
